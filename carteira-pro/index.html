@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Wakalabs Pro">
+  <meta name="theme-color" content="#0d0a16">
+  <link rel="manifest" href="manifest.json">
+  <title>Wakalabs Pro</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0d0a16;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      flex-direction: column;
+      gap: 16px;
+      font-family: sans-serif;
+    }
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      background: linear-gradient(to right, #fff, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid #2e2645;
+      border-top-color: #a855f7;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .msg { font-size: 12px; color: #94a3b8; }
+  </style>
+</head>
+<body>
+  <div class="logo">Wakalabs Pro</div>
+  <div class="spinner"></div>
+  <div class="msg">Carregando...</div>
+
+  <script>
+    // Registra Service Worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+
+    // Redireciona para o Apps Script
+    var APP_URL = 'https://script.google.com/macros/s/AKfycbw6U3oPVeG1FlADMXevQfFogEmcGPxQI0t7TnXd9mgpF5XPRUd7KgoCm-rH6_2FIQPA/exec';
+    
+    setTimeout(function() {
+      window.location.href = APP_URL;
+    }, 800);
+  </script>
+</body>
+</html>
+
